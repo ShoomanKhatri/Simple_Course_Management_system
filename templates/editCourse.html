@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+<br />
+{% load crispy_forms_tags %}
+<br />
+{% block content %}
+<a
+  href="{% url 'course' %}"
+  class="d-flex justify-content-center align-items-center btn btn-primary"
+  style="width: 50px"
+  >Back</a
+>
+<div class="d-flex justify-content-center align-items-center mb-5">
+  <div class="card shadow border p-4 w-50">
+    <h1 class="text-center mb-4">Course Form Page</h1>
+    <form method="post">
+      {% csrf_token %}
+      <br />
+      {{ form|crispy }}
+      <div class="text-center mt-3">
+        <button type="submit" class="btn btn-primary">Edit Course</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

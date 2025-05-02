@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+<br />
+{% block content %}
+<br />
+<div class="d-flex justify-content-center align-items-center mb-3 gap-5">
+  <h1 class="mb-0">Student Details</h1>
+  <a class="btn btn-primary" href="{% url 'addStudent' %}">Add Student</a>
+</div>
+
+<div class="d-flex justify-content-center align-items-center">
+  <div style="width: 80%">
+    <table
+      class="table table-hover table-striped table-bordered"
+      style="
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        overflow: hidden;
+      "
+    >
+      <thead>
+        <tr>
+          <th scope="col">S.N.</th>
+          <th scope="col">Student Number</th>
+          <th scope="col">Student Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Course</th>
+          <th scope="col">Course Period</th>
+          <th scope="col">Joined On</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for student in students %}
+        <tr class="table">
+          <th scope="row">{{student.id}}</th>
+          <td>{{student.student_number}}</td>
+          <td>{{student.name}}</td>
+          <td>{{student.address}}</td>
+          <td>{{student.course_name}}</td>
+          <td>{{student.course_period}}</td>
+          <td>{{student.joined_in}}</td>
+          <td>
+            <ul class="d-flex" style="list-style: none">
+              <li>
+                <a href="{% url 'editStudent' student.id %}"
+                  ><i class="fa-solid fa-pencil"></i
+                ></a>
+              </li>
+              <li>
+                <a href="{% url 'deleteStudent' student.id %}"
+                  ><i class="fa-solid fa-trash"></i
+                ></a>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<br />
+{% endblock %}
