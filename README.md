@@ -1,1 +1,1 @@
-# Simple Course Management System
+## Simple Course Management System
